@@ -1,30 +1,21 @@
-/* Given an integer x, return true if x is palindrome integer.
+// Given two strings, write a method to decide if one is a permutation of the 
+other.
 
-An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.*/
-
-class Solution {
-    public boolean isPalindrome(int x) {
-        if (x==0){
-            return true;
-        }
-        if (x < 0 || x % 10 == 0){
-            return false;
-        }
-        int reverse = 0;
-        while (x > reverse){
-            int pop = x % 10;
-            x /= 10;
-            
-            reverse = (reverse*10)+ pop;
-        }
-        
-        if ( x == reverse || x == reverse/10) {
-            return true;
-        }else {
-            return false;
-        }
-        
-    }
-}
-
- 
+boolean permutation(String s, String t) { 
+if (s.length() != t.length()) { 
+return false; 
+  } 
+} 
+int[] letters = new int[128]; II Assumption 
+char[] s_array = s.toCharArray(); 
+for (char c : s_array) { II count number of each char in s. 
+letters[c]++; 
+} 
+for (int i= 0; i < t.length(); i++) { 
+int c = (int) t.charAt(i); 
+letters[c]--; 
+if (letters[c] < 0) { 
+return false; 
+} 
+} 
+return true;
